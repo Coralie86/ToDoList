@@ -1,23 +1,15 @@
 import "./styles.css";
-import {page_load} from "./page-load.js";
-import {menu} from "./menu.js";
-import {contact_about} from "./contact-about.js";
+import {Project, select} from "./project.js"
+import {Dialog, DialogProject, DialogTask} from "./dialog.js";
+import {Task} from "./task.js";
+export {dialog_task}
 
-const home_button = document.querySelector('#Home');
-const menu_button = document.querySelector('#Menu');
-const contact_button = document.querySelector('#Contact');
+const test = new Project("test");
+const task = new Task("title", "description", "dueDate", "priority", "In Progress", "project_name")
+const dialog = new DialogProject("#form-dialog", "#project-form", "#project-div","#submit")
 
-page_load();
 
-home_button.addEventListener('click', function() {
-    page_load();
-})
+const dialog_task = new DialogTask("#form-dialog-task", "#task-form", "#addTask","#submit-task")
 
-menu_button.addEventListener('click', function() {
-    menu();
-})
 
-contact_button.addEventListener('click', function() {
-    contact_about();
-})
 

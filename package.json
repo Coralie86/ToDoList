@@ -6,22 +6,23 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.prod.js",
-    "dev":"webpack serve --config webpack.dev.js",
+    "dev": "webpack serve --config webpack.dev.js",
     "deploy": "git subtree push --prefix dist origin gh-pages"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Coralie86/Restaurant.git"
+    "url": "git+https://github.com/Coralie86/ToDoList.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Coralie86/Restaurant/issues"
+    "url": "https://github.com/Coralie86/ToDoList/issues"
   },
-  "homepage": "https://github.com/Coralie86/Restaurant#readme",
+  "homepage": "https://github.com/Coralie86/ToDoList#readme",
   "devDependencies": {
     "css-loader": "^7.1.2",
+    "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.4",
     "style-loader": "^4.0.0",
     "webpack": "^5.101.3",
