@@ -26,9 +26,8 @@ class Dialog {
         event.preventDefault();
         let form_data = new FormData(this.form);
         this.output = Object.fromEntries(form_data.entries());
-
+        console.log(this.output);
         this.resetForm();
-
         setTimeout(() => {
             this.dialog.close(this.output); // Delay to let dialog load completely
         }, 200);
@@ -82,7 +81,7 @@ class DialogTask extends Dialog {
     updateTask(event) {
         event.preventDefault(event);
         const task = Task.instances_list.find(t => t.id === this.editTaskId);
-
+        console.log(task);
         task.title = this.output["task-title"];
         task.description = this.output["task-description"];
         task.dueDate = this.output["task-dueDate"];
@@ -91,6 +90,7 @@ class DialogTask extends Dialog {
         task.project_name = this.output["task-project"];
 
         replaceTask(task);
+        localStorage.setItem("instances_list", JSON.stringify(Task.instances_list));
     }
 }
 
@@ -116,16 +116,17 @@ function replaceTask(task) {
     const section = document.querySelector('#list');
     if (section.contains(document.getElementById("task_"+task.id))){
         const task_div = document.getElementById("task_"+task.id);
-        console.log(task_div);
         let title = task_div.querySelector(".title");
         let due_date = task_div.querySelector(".due_date");
         let priority = task_div.querySelector(".priority");
+        let status = task_div.querySelector(".status");
         let description = task_div.querySelector(".description");
         let project_name = task_div.querySelector(".project_name");
 
         title.textContent = task.title;
-        due_date.textContent = task.due_date;
+        due_date.textContent = task.dueDate;
         priority.textContent = task.priority;
+        status.value = task.status;
         description.textContent = task.description;
         project_name.textContent = task.project_name;
     }

@@ -2,7 +2,7 @@ body {
     display: grid;
     grid-template-columns: 20% 1fr;
     min-height: 100vh;
-    font-family: cursive
+    font-family: "Victor Mono";
 }
 
 #header {
@@ -99,8 +99,8 @@ div[selected="yes"] {
     display:flex;
     align-items: center;
     font-size: 26px;
-    color:rgb(20, 127, 83);
-    /* font-weight: bold; */
+    color:black;
+    font-weight: bold;
     margin: 0 auto;
 }
 

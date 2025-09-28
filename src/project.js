@@ -37,7 +37,6 @@ const select =  {
 // Defintion filter list of task according project selected
 function filterTask(project) {    
     let task_list = Task.instances_list;
-    console.log(task_list);
     for (let x of task_list) {
         let div = document.getElementById("task_" + x.id);
         if (project === "All"){
@@ -56,7 +55,6 @@ Object.assign(Project.prototype, select);
 
 // add select to All div
 document.querySelector("#All").addEventListener('click', (e) => {
-    console.log(e.target);
     select.select(e.target);
     }
 )
