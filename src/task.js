@@ -126,7 +126,6 @@ function deleteTask(btn) {
     for (let x of Task.instances_list) {
         if (x.id === btn.target.getAttribute("task_id")){
             let index = Task.instances_list.indexOf(x);
-            localStorage.removeItem("task_"+x.id);
             Task.instances_list.splice(index,1);
             localStorage.setItem("instances_list", JSON.stringify(Task.instances_list));
         }

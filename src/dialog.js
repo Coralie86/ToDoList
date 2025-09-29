@@ -94,7 +94,7 @@ class DialogTask extends Dialog {
     }
 }
 
-// Defining function to inject list of project in the dropdozn of the dialog
+// Defining function to inject list of project in the dropdown of the dialog
 const collectProject = {
     collectProject() {
         const task_project = document.querySelector("#task-project");
