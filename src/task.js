@@ -17,9 +17,12 @@ class Task {
         this.createTask();
         Task.instances_list.push(this);
         localStorage.setItem("instances_list", JSON.stringify(Task.instances_list));
+
+        if(this.status === "Closed"){
+            document.querySelector("#task_"+ this.id).setAttribute("closed", "yes");
+        }
     }
     createTask() {
-        // populateStorage(this);
         const section = document.querySelector('#list');
         section.appendChild(addTask(this));
         }
@@ -70,6 +73,12 @@ function addTask(task) {
         status_dropdown.value = task.status;
         status_dropdown.addEventListener('change', function() {
             task.status = this.value;
+            // if (task.status === "Closed"){
+            //     div.remove();
+            //     document.querySelector('#list').appendChild(div);
+            //     div.setAttribute("closed", "yes");
+            // }
+            closedTask(task);
             localStorage.setItem("instances_list", JSON.stringify(Task.instances_list));
         })
 
@@ -149,7 +158,11 @@ function fillTask(btn) {
 
 }
 
-function populateStorage(task){
-    task.createTask = task.createTask.toString();
-    localStorage.setItem("task_"+task.id, JSON.stringify(task));
+function closedTask(task){
+    if (task.status === "Closed"){
+        const div = document.querySelector("#task_"+task.id)
+        div.remove();
+        document.querySelector('#list').appendChild(div);
+        div.setAttribute("closed", "yes");
+    }
 }

@@ -155,11 +155,22 @@ div[selected="yes"] {
     margin:0;
 }
 
+.list_items > h3, .list_items > h4 {
+    font-size: 24px;
+}
+
+div[closed="yes"]{
+    background-color: rgba(230, 227, 227, 0.781);
+    color: grey;
+    font-style: italic;
+    border: 1px solid grey;
+}
+
 .title {
     grid-column: 1/2;
     grid-row: 1/2;
     justify-self: left;
-    font-size: 22px;
+    font-size: 24px;
 }
 
 .due_date {
@@ -233,10 +244,15 @@ div > button {
     border-radius: 5px;
 }
 
+div[closed="yes"] .interaction > div > button {
+    background-color: rgb(118, 119, 119);
+    pointer-events: none;
+}
+
 input, select {
     border: 1px solid rgb(13, 80, 52);
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 option:hover {
@@ -260,4 +276,13 @@ select {
         appearance: base-select;
         color:rgb(13, 80, 52);
     }
+}
+
+div[closed="yes"] .interaction > select {
+    color:rgb(78, 80, 79);
+    &, &::picker(select) {
+        appearance: base-select;
+        color:rgb(81, 82, 81);
+    }
+    pointer-events: none;
 }

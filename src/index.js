@@ -9,9 +9,18 @@ export {dialog_task}
 const dialog = new DialogProject("#form-dialog", "#project-form", "#project-div","#submit")
 const dialog_task = new DialogTask("#form-dialog-task", "#task-form", "#addTask","#submit-task")
 
+const instances_list = JSON.parse(localStorage.getItem("instances_list"));
+let instances_list_ordered = [];
+for (let x of instances_list){
+    if(x.status > "Closed"){
+        instances_list_ordered.unshift(x);
+    } else {
+        instances_list_ordered.push(x);
+    }
+}
+
 if(localStorage.length != 0){
-    const instances_list = JSON.parse(localStorage.getItem("instances_list"));
-    for (let x of instances_list) {
+    for (let x of instances_list_ordered) {
         let task = new Task(x.title, x.description, x.dueDate, x.priority, x.status, x.project_name, x.id);
     }
     const project_list = JSON.parse(localStorage.getItem("project_list"));
