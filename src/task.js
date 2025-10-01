@@ -1,4 +1,4 @@
-export {Task, addTask, addTask_assign}
+export {Task, addTask, addTask_assign, closedTask}
 import {DialogTask} from "./dialog.js"
 import {dialog_task} from "./index.js"
 
@@ -73,11 +73,6 @@ function addTask(task) {
         status_dropdown.value = task.status;
         status_dropdown.addEventListener('change', function() {
             task.status = this.value;
-            // if (task.status === "Closed"){
-            //     div.remove();
-            //     document.querySelector('#list').appendChild(div);
-            //     div.setAttribute("closed", "yes");
-            // }
             closedTask(task);
             localStorage.setItem("instances_list", JSON.stringify(Task.instances_list));
         })
@@ -155,7 +150,6 @@ function fillTask(btn) {
     document.querySelector("#task-dueDate").value = task.dueDate;
     document.querySelector("#task-priority").value = task.priority;
     document.querySelector("#task-status").value = task.status;
-
 }
 
 function closedTask(task){

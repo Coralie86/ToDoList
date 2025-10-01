@@ -1,5 +1,5 @@
 import {Project} from "./project.js"
-import {Task} from "./task.js"
+import {Task, closedTask} from "./task.js"
 export {Dialog, DialogProject, DialogTask};
 
 class Dialog {
@@ -90,6 +90,7 @@ class DialogTask extends Dialog {
         task.project_name = this.output["task-project"];
 
         replaceTask(task);
+        closedTask(task);
         localStorage.setItem("instances_list", JSON.stringify(Task.instances_list));
     }
 }
